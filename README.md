@@ -2,6 +2,8 @@
 
 Sitio de una hamburguesería **ficticia** del centro de Tunja, hecho para mi portafolio. La página es la fachada del local: un muro encalado, el nombre pintado y una puerta que se abre si el restaurante está abierto en ese momento. La carta es el interior, oscuro y cálido.
 
+**Sitio publicado:** https://paramo-kyotto44.netlify.app
+
 > Páramo no existe: la carta, los precios, la dirección y el horario son de demostración.
 
 ## Funcionalidades
@@ -95,6 +97,12 @@ Compilado con gzip: HTML 4,6 KB, CSS 5,6 KB y JS 3,3 KB. Las fuentes pesan unos 
 
 ## Publicar en Netlify
 
-1. Sube el repositorio a GitHub.
-2. En Netlify: *Add new site → Import from Git* y elige el repositorio. Netlify lee `netlify.toml` (ejecuta `npm run build` y publica `dist/`).
-3. Las reservas llegan a *Site → Forms → reserva*. Netlify detecta el formulario solo, por el atributo `data-netlify`.
+El sitio se publica con la [CLI de Netlify](https://docs.netlify.com/cli/get-started/), que lee `netlify.toml` (compila con `npm run build` y sube `dist/` con sus cabeceras):
+
+```bash
+netlify login
+netlify link
+netlify deploy --build --prod
+```
+
+Las reservas llegan a *Project → Forms → reserva*. En proyectos nuevos hay que activar antes *Enable form detection* en esa misma página; luego Netlify encuentra el formulario solo, por el atributo `data-netlify`.
