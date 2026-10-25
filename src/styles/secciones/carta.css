@@ -1,0 +1,268 @@
+/*
+ * La carta: el interior del local. Un solo tamaño de letra en toda la lista;
+ * el rango lo dan el peso, las mayúsculas y las reglas, como una carta impresa.
+ * El plato que miras se calienta como un carbón y se enfría despacio al soltarlo.
+ */
+.interior {
+  padding-block: var(--e-9);
+  background: var(--hollin);
+  color: var(--hueso);
+  /* El umbral de piedra al cruzar la puerta. */
+  border-top: 0.75rem solid var(--piedra);
+  color-scheme: dark;
+}
+
+.interior__encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--e-4) var(--e-7);
+}
+
+.interior__nota {
+  max-width: 38ch;
+  color: var(--hueso-suave);
+}
+
+/* Filtros */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  margin-top: var(--e-7);
+}
+
+.filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: 2.75rem;
+  padding: var(--e-2) var(--e-4);
+  border: 1.5px solid rgb(241 233 221 / 0.3);
+  border-radius: var(--radio-campo);
+  background: transparent;
+  color: var(--hueso);
+  font-weight: 700;
+  touch-action: manipulation;
+  user-select: none;
+  transition:
+    background-color var(--rapido) ease,
+    border-color var(--rapido) ease,
+    color var(--rapido) ease,
+    transform var(--rapido) var(--salida);
+}
+
+.filtro:active {
+  transform: scale(0.97);
+}
+
+.filtro__cuenta {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--hueso-suave);
+}
+
+.filtro[aria-pressed="true"] {
+  border-color: var(--brasa);
+  background: var(--brasa);
+  color: var(--hollin);
+}
+
+.filtro[aria-pressed="true"] .filtro__cuenta {
+  color: inherit;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .filtro[aria-pressed="false"]:hover {
+    border-color: var(--hueso);
+  }
+}
+
+/* Lista */
+.carta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: var(--e-8) var(--e-7);
+  margin-top: var(--e-7);
+}
+
+.grupo--hamburguesas {
+  grid-column: 1 / -1;
+}
+
+.grupo--hamburguesas .grupo__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  column-gap: var(--e-7);
+}
+
+.grupo__titulo {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--e-2);
+  border-bottom: 2px solid var(--hueso);
+  font-size: var(--texto);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.grupo__cuenta {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--hueso-suave);
+}
+
+.plato {
+  position: relative;
+  padding-block: var(--e-4);
+  border-bottom: 1px solid rgb(241 233 221 / 0.14);
+}
+
+/* El carbón: brillo que entra rápido y se apaga lento. Solo se anima la opacidad. */
+.plato::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(-1 * var(--e-3));
+  border-radius: 6px;
+  background: radial-gradient(130% 150% at 0% 60%, var(--brasa-tenue), transparent 72%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--enfriar) var(--salida);
+}
+
+.plato__linea {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-2);
+  font-size: var(--texto);
+  font-weight: 800;
+}
+
+.plato__nombre {
+  transition: color var(--enfriar) var(--salida);
+}
+
+.plato__puntos {
+  flex: 1;
+  min-width: var(--e-5);
+  border-bottom: 2px dotted rgb(188 174 158 / 0.5);
+  transform: translateY(-0.3em);
+}
+
+.plato__precio {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.plato__descripcion {
+  position: relative;
+  max-width: 52ch;
+  margin-top: var(--e-1);
+  color: var(--hueso-suave);
+}
+
+.plato__etiqueta {
+  color: var(--hueso);
+}
+
+.plato:focus-within::before {
+  opacity: 1;
+  transition-duration: 120ms;
+}
+
+.plato:focus-within .plato__nombre {
+  color: var(--brasa-viva);
+  transition-duration: 120ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .plato:hover::before {
+    opacity: 1;
+    transition-duration: 120ms;
+  }
+
+  .plato:hover .plato__nombre {
+    color: var(--brasa-viva);
+    transition-duration: 120ms;
+  }
+}
+
+/* Capas: la hamburguesa armada de pan a pan, como una pila de renglones. */
+.capas {
+  position: relative;
+  margin-top: var(--e-3);
+}
+
+.capas__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: 2.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.capas__boton::-webkit-details-marker {
+  display: none;
+}
+
+/* Signo más que se vuelve menos: dos barras dibujadas. */
+.capas__boton::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 2px 100% no-repeat;
+  transition: transform var(--rapido) var(--salida);
+}
+
+.capas[open] .capas__boton::before {
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
+  transform: rotate(180deg);
+}
+
+.capas__pila {
+  display: grid;
+  gap: 3px;
+  max-width: 24rem;
+  margin-top: var(--e-2);
+  counter-reset: capa;
+}
+
+.capas__capa {
+  margin-inline: var(--e-2);
+  padding: var(--e-1) var(--e-3);
+  border-radius: 2px;
+  background: var(--hollin-alto);
+  color: var(--hueso);
+}
+
+.capas__capa--pan {
+  margin-inline: 0;
+  background: var(--hueso-suave);
+  color: var(--hollin);
+  font-weight: 700;
+}
+
+.capas__capa--pan:first-child {
+  border-radius: 1.25rem 1.25rem 3px 3px;
+  padding-top: var(--e-2);
+}
+
+.capas__capa--pan:last-child {
+  border-radius: 3px 3px 0.75rem 0.75rem;
+}
+
+.carta__aviso {
+  margin-top: var(--e-7);
+  color: var(--hueso-suave);
+  font-size: var(--texto-chico);
+}

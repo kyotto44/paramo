@@ -1,0 +1,111 @@
+/* Estilos del documento y de las superficies que el navegador pinta por su cuenta. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--e-5);
+  scrollbar-color: var(--verde) var(--cal-sombra);
+}
+
+body {
+  min-height: 100svh;
+  background: var(--cal);
+  color: var(--tinta);
+  font-family: var(--letra-texto);
+  font-size: var(--texto);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--brasa);
+  color: var(--hollin);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/*
+ * Foco: anillo con separación. Sobre la cal la brasa no alcanza 3:1, así que ahí el anillo
+ * es hollín (15:1); en el interior, el verde y el pie es brasa (≥ 3,7:1).
+ */
+:root {
+  --foco: var(--hollin);
+}
+
+.interior,
+.reservas,
+.pie {
+  --foco: var(--brasa);
+}
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+:target {
+  scroll-margin-top: var(--e-5);
+}
+
+/* En horizontal, el contenido se aparta del notch; los fondos siguen de borde a borde. */
+.contenedor {
+  width: min(
+    100% - 2 * max(var(--margen), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)),
+    var(--ancho)
+  );
+  margin-inline: auto;
+}
+
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.saltar {
+  position: absolute;
+  top: var(--e-3);
+  left: var(--e-3);
+  z-index: 10;
+  min-height: 2.75rem;
+  padding: var(--e-3) var(--e-4);
+  background: var(--hollin);
+  color: var(--hueso);
+  font-weight: 700;
+  border-radius: var(--radio-campo);
+  transform: translateY(-200%);
+}
+
+.saltar:focus-visible {
+  transform: none;
+}
+
+.titulo {
+  font-family: var(--letra-rotulo);
+  font-weight: 400;
+  font-size: var(--titulo);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

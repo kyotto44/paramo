@@ -1,0 +1,64 @@
+/* Botones: madera pintada. El primario es sólido; el de línea, solo el filete. */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: var(--e-3) var(--e-5);
+  border: 2px solid var(--verde);
+  border-radius: var(--radio-campo);
+  font-weight: 800;
+  font-size: var(--texto);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  touch-action: manipulation;
+  transition:
+    background-color var(--rapido) ease,
+    border-color var(--rapido) ease,
+    color var(--rapido) ease,
+    transform var(--rapido) var(--salida);
+}
+
+.boton:active {
+  transform: scale(0.97);
+}
+
+.boton--primario {
+  background: var(--verde);
+  color: var(--hueso);
+}
+
+.boton--linea {
+  background: transparent;
+  color: var(--verde);
+}
+
+.boton--linea-clara {
+  background: transparent;
+  border-color: var(--hueso);
+  color: var(--hueso);
+}
+
+.boton[aria-busy="true"] {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .boton--primario:hover {
+    background: var(--verde-luz);
+    border-color: var(--verde-luz);
+  }
+
+  .boton--linea:hover {
+    background: var(--verde);
+    color: var(--hueso);
+  }
+
+  .boton--linea-clara:hover {
+    background: var(--hueso);
+    color: var(--verde-sombra);
+  }
+}

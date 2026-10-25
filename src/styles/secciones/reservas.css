@@ -1,0 +1,120 @@
+/* Reservas: la madera verde de la puerta, con el formulario pintado encima. */
+.reservas {
+  padding-block: var(--e-9);
+  background: var(--verde);
+  color: var(--hueso);
+  color-scheme: dark;
+}
+
+.reservas__rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: var(--e-8);
+}
+
+.reservas__texto p {
+  max-width: 38ch;
+  margin-top: var(--e-5);
+  color: var(--verde-texto);
+}
+
+/* Seis columnas: nombre y correo a la mitad; día, hora y personas a un tercio. */
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--e-5) var(--e-4);
+}
+
+.formulario .campo {
+  grid-column: span 2;
+}
+
+.formulario .campo--mitad {
+  grid-column: span 3;
+}
+
+.formulario .campo--ancho {
+  grid-column: 1 / -1;
+}
+
+.formulario__envio {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-4);
+  margin-top: var(--e-2);
+}
+
+.reservas .boton--primario {
+  border-color: var(--hueso);
+  background: var(--hueso);
+  color: var(--verde-sombra);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reservas .boton--primario:hover {
+    border-color: #fff;
+    background: #fff;
+  }
+}
+
+.formulario__estado {
+  font-weight: 700;
+}
+
+.formulario__estado[data-tono="error"] {
+  color: var(--aviso);
+}
+
+/* Confirmación con el sello. */
+.confirmacion {
+  display: grid;
+  justify-items: start;
+  gap: var(--e-4);
+  outline: none;
+}
+
+.confirmacion__titulo {
+  font-family: var(--letra-rotulo);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  line-height: 1;
+}
+
+.confirmacion__resumen {
+  max-width: 44ch;
+  font-size: 1.125rem;
+}
+
+.confirmacion__nota {
+  color: var(--verde-texto);
+  font-size: var(--texto-chico);
+}
+
+@media (max-width: 52rem) {
+  .reservas__rejilla {
+    grid-template-columns: 1fr;
+    gap: var(--e-7);
+  }
+}
+
+@media (max-width: 40rem) {
+  .formulario .campo,
+  .formulario .campo--mitad {
+    grid-column: 1 / -1;
+  }
+
+  /* Día y hora sí caben juntos en el celular; personas va debajo. */
+  .formulario .campo--corto {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 30rem) {
+
+  .formulario__envio .boton {
+    width: 100%;
+  }
+}

@@ -1,0 +1,80 @@
+/* Campos del formulario, sobre la madera verde de la sección de reservas. */
+.campo {
+  display: grid;
+  gap: var(--e-1);
+  align-content: start;
+}
+
+.campo--ancho {
+  grid-column: 1 / -1;
+}
+
+.campo__etiqueta {
+  font-weight: 700;
+}
+
+.campo__opcional {
+  font-weight: 400;
+  color: var(--verde-texto);
+}
+
+.campo__control {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: var(--e-3) var(--e-4);
+  border: 1.5px solid rgb(241 233 221 / 0.35);
+  border-radius: var(--radio-campo);
+  background: var(--verde-sombra);
+  color: var(--hueso);
+  /* 16px o más: Safari en iPhone no hace zoom al enfocar. */
+  font-size: max(1rem, var(--texto));
+  caret-color: var(--brasa);
+  transition: border-color var(--rapido) ease;
+}
+
+.campo__control::placeholder {
+  color: var(--verde-texto);
+  opacity: 1;
+}
+
+.campo__control:focus {
+  border-color: var(--brasa);
+}
+
+.campo__control[aria-invalid="true"] {
+  border-color: var(--aviso);
+}
+
+textarea.campo__control {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+select.campo__control {
+  appearance: none;
+  padding-right: var(--e-7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23f1e9dd' stroke-width='1.8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--e-4) center;
+  background-size: 0.8rem;
+}
+
+.campo__control:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.campo__ayuda {
+  font-size: var(--texto-chico);
+  color: var(--verde-texto);
+}
+
+.campo__error {
+  font-size: var(--texto-chico);
+  font-weight: 700;
+  color: var(--aviso);
+}
+
+.campo__error:empty {
+  display: none;
+}

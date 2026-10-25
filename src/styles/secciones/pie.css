@@ -1,0 +1,49 @@
+/* Pie: el zócalo de la última pared, en verde oscuro. */
+.pie {
+  padding-block: var(--e-7) max(var(--e-7), env(safe-area-inset-bottom));
+  background: var(--verde-sombra);
+  color: var(--hueso-suave);
+  font-size: var(--texto-chico);
+}
+
+.pie__contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--e-3) var(--e-7);
+}
+
+.pie__contenido p:last-child {
+  max-width: 70ch;
+}
+
+.pie__marca {
+  color: var(--hueso);
+  font-family: var(--letra-rotulo);
+  font-size: 1.5rem;
+}
+
+.pie a {
+  color: var(--hueso);
+}
+
+/* Páginas sueltas (gracias y 404): un muro, un letrero y la vuelta a casa. */
+.pagina-simple {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--e-5);
+  min-height: 100svh;
+  padding-block: var(--e-8);
+}
+
+.pagina-simple .titulo {
+  color: var(--verde);
+  font-size: var(--rotulo);
+  line-height: 0.85;
+}
+
+.pagina-simple p {
+  max-width: 40ch;
+  font-size: 1.125rem;
+}

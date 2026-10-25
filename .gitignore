@@ -1,0 +1,27 @@
+# Archivos que no se suben a GitHub
+
+# Claves y configuración local (el sitio no usa ninguna, pero si algún día se agrega, nunca se sube)
+.env
+.env.*
+!.env.example
+
+# Netlify CLI (guarda el id del sitio en tu equipo)
+.netlify/
+
+# Dependencias y compilado: se regeneran con npm install y npm run build
+node_modules/
+dist/
+
+# Herramientas de diseño locales
+.impeccable/
+
+# Registros
+*.log
+npm-debug.log*
+
+# Editor y sistema operativo
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

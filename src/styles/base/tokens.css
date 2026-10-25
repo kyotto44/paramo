@@ -1,0 +1,76 @@
+/*
+ * Tokens: el mundo de la fachada en variables.
+ * Cal fría del muro, verde de la madera pintada, hollín del interior y la brasa.
+ * Regla de la casa: --brasa solo marca lo activo (abierto, elegido, foco, hoy). Nunca decora.
+ */
+:root {
+  /* Muro encalado y su sombra. */
+  --cal: #eceee8;
+  --cal-sombra: #d9dcd2;
+  --piedra: #bdb9ad;
+  --piedra-oscura: #8f8b80;
+
+  /* Madera pintada de puertas, postigos y zócalo. */
+  --verde: #1e4636;
+  --verde-luz: #2b5c48;
+  --verde-sombra: #122c22;
+  /* Texto secundario sobre el verde: teñido del mismo verde, nunca gris (6,4:1). */
+  --verde-texto: #c2d3c7;
+
+  /* Interior: hollín, madera y el hueso de la loza. */
+  --hollin: #1c1916;
+  --hollin-alto: #28231f;
+  --hueso: #f1e9dd;
+  --hueso-suave: #bcae9e;
+
+  /* Texto sobre la cal. */
+  --tinta: #1c1916;
+  --tinta-suave: #4b5049;
+
+  /* La brasa: estados activos. Sobre ella el texto siempre es --hollin (contraste 7:1). */
+  --brasa: #ec7a2f;
+  --brasa-viva: #ffab61;
+  --brasa-tenue: rgb(236 122 47 / 0.16);
+
+  /* Avisos del formulario sobre el verde. */
+  --aviso: #ffc4ae;
+
+  /* Tipografía: letra de rótulo para nombres; una sans muy legible para todo lo demás. */
+  --letra-rotulo: "Ultra", "Rockwell Extra Bold", "Rockwell", Georgia, serif;
+  --letra-texto: "Atkinson Hyperlegible Next Variable", "Segoe UI", system-ui, sans-serif;
+
+  /* Escala: la carta usa un solo tamaño (--texto); el rango lo dan peso, caja y reglas. */
+  --texto: 1.0625rem;
+  --texto-chico: 0.9375rem;
+  --titulo: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
+  --rotulo: clamp(4.25rem, 1rem + 12.5vw, 11.5rem);
+
+  /* Espacio: un solo ritmo. Más aire arriba de un título que abajo. */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4.5rem;
+  --e-9: 7rem;
+  --margen: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --ancho: 76rem;
+
+  /* Forma: la cerámica tiene esquinas apenas suavizadas; la madera, rectas. */
+  --radio-placa: 5px;
+  --radio-campo: 4px;
+
+  /* Profundidad: sombras con desplazamiento y desenfoque, como luz que cae de arriba. */
+  --sombra-placa: 0 1px 1px rgb(28 25 22 / 0.12), 0 4px 10px -4px rgb(28 25 22 / 0.25);
+  --sombra-puerta: 0 24px 40px -24px rgb(18 44 34 / 0.6);
+
+  /* Movimiento. */
+  --salida: cubic-bezier(0.23, 1, 0.32, 1);
+  --vaiven: cubic-bezier(0.77, 0, 0.175, 1);
+  --rapido: 160ms;
+  --enfriar: 1400ms;
+
+  color-scheme: light;
+}

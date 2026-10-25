@@ -1,0 +1,73 @@
+/* Dónde y cuándo: la placa de la dirección y el tablero del horario, en el muro. */
+.horario {
+  padding-block: var(--e-9);
+}
+
+.horario__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  align-items: start;
+  gap: var(--e-8);
+}
+
+.horario__lugar .titulo {
+  color: var(--verde);
+}
+
+.horario__como {
+  max-width: 40ch;
+  margin-top: var(--e-5);
+  color: var(--tinta-suave);
+}
+
+/* Tablero de madera pintada con el horario. Hoy se marca en brasa. */
+.tablero {
+  padding: var(--e-4) var(--e-5);
+  background: var(--verde);
+  color: var(--hueso);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 4px var(--verde-sombra),
+    inset 0 0 0 5px var(--verde-luz),
+    var(--sombra-puerta);
+}
+
+.tablero__tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tablero__dia th,
+.tablero__dia td {
+  padding: var(--e-3) var(--e-3);
+  border-bottom: 1px solid rgb(241 233 221 / 0.18);
+}
+
+.tablero__dia:last-child th,
+.tablero__dia:last-child td {
+  border-bottom: 0;
+}
+
+.tablero__dia th {
+  font-weight: 700;
+  text-align: left;
+}
+
+.tablero__dia td {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tablero__dia--cerrado {
+  color: var(--verde-texto);
+}
+
+.tablero__dia[data-hoy] {
+  background: var(--brasa);
+  color: var(--hollin);
+}
+
+.tablero__dia[data-hoy] th::after {
+  content: " · hoy";
+  font-weight: 500;
+}

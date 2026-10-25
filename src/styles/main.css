@@ -1,0 +1,19 @@
+/*
+ * Hoja de entrada. Vite la junta con todos sus @import en un solo archivo minificado.
+ * Orden: base → componentes → secciones.
+ */
+@import "./base/tokens.css";
+@import "./base/reset.css";
+@import "./base/global.css";
+
+@import "./componentes/placa.css";
+@import "./componentes/boton.css";
+@import "./componentes/puerta.css";
+@import "./componentes/campo.css";
+@import "./componentes/sello.css";
+
+@import "./secciones/fachada.css";
+@import "./secciones/carta.css";
+@import "./secciones/horario.css";
+@import "./secciones/reservas.css";
+@import "./secciones/pie.css";

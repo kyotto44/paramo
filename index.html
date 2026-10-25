@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Páramo · Hamburguesas a la brasa en Tunja</title>
+    <meta
+      name="description"
+      content="Páramo, hamburguesería a la brasa en el centro de Tunja (negocio ficticio, proyecto de portafolio): carta con precios, horario y reservas en línea."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content="Páramo · Hamburguesas a la brasa en Tunja" />
+    <meta property="og:description" content="Afuera hace frío; adentro está la brasa. Carta, horario y reservas." />
+    <meta name="theme-color" content="#eceee8" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#carta">Saltar a la carta</a>
+
+    <!-- La fachada: el muro, el nombre pintado y la puerta que dice si está abierto. -->
+    <header class="fachada" id="inicio">
+      <nav class="fachada__nav contenedor" aria-label="Principal">
+        <a class="placa placa--marca" href="#inicio" aria-label="Páramo, inicio">
+          <span class="placa__nombre">Páramo</span>
+          <span class="placa__numero">Calle 19 # 10-42</span>
+        </a>
+        <ul class="fachada__enlaces">
+          <li><a class="placa placa--chica" href="#carta">Carta</a></li>
+          <li><a class="placa placa--chica" href="#horario">Horario</a></li>
+          <li><a class="placa placa--chica" href="#reservas">Reservas</a></li>
+        </ul>
+      </nav>
+
+      <div class="fachada__muro contenedor">
+        <div class="fachada__texto">
+          <h1 class="fachada__rotulo">Páramo</h1>
+          <p class="fachada__lema">Hamburguesas a la brasa en el centro de Tunja. Afuera hace frío; adentro está el fuego.</p>
+          <div class="fachada__acciones">
+            <a class="boton boton--primario" href="#reservas">Reservar mesa</a>
+            <a class="boton boton--linea" href="#carta">Ver la carta</a>
+          </div>
+        </div>
+
+        <!-- @puerta -->
+      </div>
+
+      <div class="zocalo" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <!-- La carta es el interior: hollín, madera y la brasa en lo que miras. -->
+      <section class="interior" id="carta" aria-labelledby="carta-titulo">
+        <div class="contenedor">
+          <div class="interior__encabezado">
+            <h2 class="titulo" id="carta-titulo">La carta</h2>
+            <p class="interior__nota">Todo sale de la parrilla de carbón. Precios en pesos, con impuestos incluidos.</p>
+          </div>
+          <!-- @carta -->
+        </div>
+      </section>
+
+      <!-- Horario y dirección, de vuelta en el muro. -->
+      <section class="horario" id="horario" aria-labelledby="horario-titulo">
+        <div class="contenedor horario__rejilla">
+          <div class="horario__lugar">
+            <h2 class="titulo" id="horario-titulo">Dónde y cuándo</h2>
+            <!-- @direccion -->
+          </div>
+          <!-- @horario -->
+        </div>
+      </section>
+
+      <!-- Reservas: el formulario va pintado sobre la madera verde. -->
+      <section class="reservas" id="reservas" aria-labelledby="reservas-titulo">
+        <div class="contenedor reservas__rejilla">
+          <div class="reservas__texto">
+            <h2 class="titulo" id="reservas-titulo">Reserva tu mesa</h2>
+            <p>Guardamos la mesa 15 minutos después de la hora. Para grupos de más de 12 personas, escríbelo en el comentario y te contactamos.</p>
+          </div>
+          <!-- @reserva -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor pie__contenido">
+        <p class="pie__marca">Páramo</p>
+        <p>
+          Páramo es un negocio ficticio: la carta, los precios, la dirección y el horario son de demostración.
+          Sitio hecho por <a href="https://github.com/kyotto44">Santiago Angarita</a> para su portafolio.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

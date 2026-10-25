@@ -1,0 +1,20 @@
+{
+  "name": "paramo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sitio de Páramo, una hamburguesería ficticia de Tunja: carta con filtros, horario y reservas.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "devDependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "5.2.6",
+    "@fontsource/ultra": "5.2.5",
+    "vite": "8.3.4"
+  }
+}

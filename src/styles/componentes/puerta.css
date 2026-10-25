@@ -1,0 +1,145 @@
+/*
+ * La puerta del local, hecha con geometría: vano de piedra, dos hojas de madera verde
+ * con tres tableros cada una y el interior oscuro detrás.
+ * data-estado lo pone js/modulos/estado-local.js: "abierto", "cerrado" o "desconocido" (sin JS).
+ * Si está abierto, la hoja derecha gira hacia adentro y sale la luz de la brasa.
+ */
+.puerta {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  align-self: end;
+  width: 100%;
+}
+
+.puerta__vano {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 0.56;
+  border: clamp(0.6rem, 1.3vw, 1.1rem) solid var(--piedra);
+  border-top-width: clamp(1.1rem, 2.4vw, 2rem);
+  border-bottom: 0;
+  background: var(--hollin);
+  box-shadow:
+    inset 0 0 0 1px var(--piedra-oscura),
+    var(--sombra-puerta);
+  perspective: 1400px;
+}
+
+/* El interior: hollín y, si está abierto, la brasa que alumbra desde el fondo. */
+.puerta__interior {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 60% at 70% 92%, var(--brasa-viva), var(--brasa) 38%, transparent 78%);
+  opacity: 0;
+  transition: opacity 900ms var(--salida) 200ms;
+}
+
+.puerta__hoja {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1.05fr 1.25fr 0.7fr;
+  gap: 8%;
+  padding: 14% 13% 16%;
+  background: var(--verde);
+  box-shadow:
+    inset 1px 0 0 var(--verde-luz),
+    inset -1px 0 0 var(--verde-sombra);
+  backface-visibility: hidden;
+  transition:
+    transform 1100ms var(--vaiven) 250ms,
+    filter 1100ms var(--vaiven) 250ms;
+}
+
+.puerta__hoja--izquierda {
+  transform-origin: left center;
+}
+
+.puerta__hoja--derecha {
+  transform-origin: right center;
+}
+
+/* Tablero con moldura: luz arriba a la izquierda, sombra abajo a la derecha. */
+.puerta__tablero {
+  border-radius: 1px;
+  box-shadow:
+    inset 2px 2px 0 var(--verde-sombra),
+    inset -2px -2px 0 var(--verde-luz),
+    0 0 0 3px var(--verde),
+    0 0 0 4px var(--verde-sombra);
+}
+
+/* Herrajes: la manija de cada hoja junto a la junta central. */
+.puerta__hoja::after {
+  content: "";
+  position: absolute;
+  top: 52%;
+  width: 7%;
+  aspect-ratio: 1 / 2.4;
+  border-radius: 2px;
+  background: var(--hollin);
+  box-shadow: 0 2px 3px rgb(0 0 0 / 0.35);
+}
+
+.puerta__hoja--izquierda::after {
+  right: 6%;
+}
+
+.puerta__hoja--derecha::after {
+  left: 6%;
+}
+
+.puerta[data-estado="abierto"] .puerta__interior {
+  opacity: 1;
+}
+
+.puerta[data-estado="abierto"] .puerta__hoja--derecha {
+  transform: rotateY(-42deg);
+  filter: brightness(0.82);
+}
+
+/* Letrero esmaltado colgado del dintel: dice el estado con palabras. */
+.letrero {
+  position: absolute;
+  top: calc(clamp(1.1rem, 2.4vw, 2rem) + var(--e-5));
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  min-width: 70%;
+  padding: var(--e-2) var(--e-4);
+  border-radius: var(--radio-placa);
+  background: #fafaf6;
+  color: var(--verde);
+  box-shadow:
+    inset 0 0 0 2px currentColor,
+    var(--sombra-placa);
+  line-height: 1.2;
+  text-align: center;
+  transform: translateX(-50%);
+  transition:
+    background-color var(--rapido) ease,
+    color var(--rapido) ease;
+}
+
+.letrero__estado {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.letrero__detalle {
+  font-size: var(--texto-chico);
+  font-weight: 600;
+}
+
+.puerta[data-estado="abierto"] .letrero {
+  background: var(--brasa);
+  color: var(--hollin);
+}
+
+.puerta[data-estado="cerrado"] .letrero {
+  background: var(--hollin);
+  color: var(--hueso);
+}

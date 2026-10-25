@@ -1,0 +1,131 @@
+/*
+ * Primera pantalla: el muro encalado, el nombre pintado a escala de fachada,
+ * la puerta a la derecha y el zócalo verde al pie del muro.
+ */
+.fachada {
+  --alto-zocalo: clamp(3.5rem, 9svh, 6rem);
+  --alto-puerta: min(70svh, 44rem);
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100svh;
+  padding-top: max(var(--e-4), env(safe-area-inset-top));
+  overflow: clip;
+}
+
+.fachada__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-4);
+  position: relative;
+  z-index: 2;
+}
+
+.fachada__enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+}
+
+.fachada__muro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  /* La puerta conserva su proporción: su columna se calcula desde la altura deseada. */
+  grid-template-columns: minmax(0, 1fr) min(calc(var(--alto-puerta) * 0.56), 38vw);
+  align-items: end;
+  gap: var(--e-7);
+  padding-top: var(--e-8);
+}
+
+.fachada__texto {
+  container-type: inline-size;
+  align-self: center;
+  padding-bottom: var(--alto-zocalo);
+}
+
+/* El nombre se pinta al ancho de su columna (≈ 4,4 em de ancho) y nunca se parte. */
+.fachada__rotulo {
+  margin-left: -0.04em;
+  color: var(--verde);
+  font-family: var(--letra-rotulo);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 22cqi, 11.5rem);
+  white-space: nowrap;
+  line-height: 0.82;
+  letter-spacing: -0.025em;
+}
+
+.fachada__lema {
+  max-width: 30ch;
+  margin-top: var(--e-6);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.fachada__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+  margin-top: var(--e-6);
+}
+
+/* Zócalo: la franja pintada al pie de los muros coloniales, con su filete. */
+.zocalo {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--alto-zocalo);
+  background: var(--verde);
+  box-shadow:
+    inset 0 5px 0 var(--verde-sombra),
+    inset 0 7px 0 var(--verde-luz);
+}
+
+@media (max-width: 52rem) {
+  .fachada {
+    --alto-puerta: 30rem;
+  }
+
+  .fachada__muro {
+    grid-template-columns: 1fr;
+    gap: var(--e-6);
+    padding-top: var(--e-7);
+  }
+
+  .fachada__texto {
+    padding-bottom: 0;
+  }
+
+  .puerta {
+    justify-self: center;
+    width: min(78%, 17rem);
+  }
+}
+
+@media (max-width: 30rem) {
+  .placa--marca {
+    flex-grow: 1;
+  }
+
+  .fachada__enlaces {
+    width: 100%;
+  }
+
+  .fachada__enlaces li {
+    flex: 1;
+  }
+
+  .fachada__enlaces .placa {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .fachada__acciones .boton {
+    flex: 1 1 auto;
+    padding-inline: var(--e-4);
+  }
+}

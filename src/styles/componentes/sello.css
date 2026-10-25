@@ -1,0 +1,43 @@
+/*
+ * El sello de la reserva: el único golpe fuerte de todo el sitio.
+ * Baja acelerando, como un sello de mano, y se asienta con un rebote mínimo.
+ * Con "reducir movimiento" aparece ya puesto.
+ */
+.sello {
+  display: grid;
+  place-items: center;
+  width: 9.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--brasa);
+  /* Doble anillo de sello: el borde y, por dentro, un filete más fino. */
+  border: 3px solid currentColor;
+  outline: 1.5px solid currentColor;
+  outline-offset: -10px;
+  font-family: var(--letra-rotulo);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(-9deg);
+}
+
+.confirmacion:not([hidden]) .sello {
+  animation: sellar 520ms both;
+}
+
+@keyframes sellar {
+  0% {
+    opacity: 0;
+    transform: translateY(-2.5rem) scale(1.7) rotate(-18deg);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.4);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.94) rotate(-9deg);
+    animation-timing-function: var(--salida);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-9deg);
+  }
+}

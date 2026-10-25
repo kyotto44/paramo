@@ -1,0 +1,87 @@
+/*
+ * Placa de cerámica: la nomenclatura del centro histórico.
+ * Esmalte blanco con doble filete verde. Se usa para la marca, la navegación y la dirección.
+ */
+.placa {
+  --esmalte: #fafaf6;
+  display: inline-grid;
+  align-content: center;
+  padding: var(--e-2) var(--e-4);
+  background: var(--esmalte);
+  color: var(--verde);
+  border-radius: var(--radio-placa);
+  box-shadow:
+    inset 0 0 0 2px var(--verde),
+    inset 0 0 0 4px var(--esmalte),
+    inset 0 0 0 5px var(--verde),
+    var(--sombra-placa);
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--rapido) ease,
+    color var(--rapido) ease,
+    transform var(--rapido) var(--salida);
+}
+
+a.placa:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.placa:hover {
+    --esmalte: var(--verde);
+    background-color: var(--verde);
+    color: var(--hueso);
+  }
+}
+
+.placa--chica {
+  min-height: 2.75rem;
+  padding-inline: var(--e-4);
+  font-size: var(--texto-chico);
+}
+
+.placa--marca {
+  padding: var(--e-2) var(--e-5);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.placa__nombre {
+  font-family: var(--letra-rotulo);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.placa__numero {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.placa--direccion {
+  gap: var(--e-1);
+  margin-top: var(--e-6);
+  padding: var(--e-5) var(--e-6);
+  font-style: normal;
+}
+
+.placa__calle {
+  font-family: var(--letra-rotulo);
+  font-weight: 400;
+  font-size: clamp(1.375rem, 1rem + 1.4vw, 2rem);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.1;
+}
+
+.placa__ciudad {
+  font-size: var(--texto-chico);
+  letter-spacing: 0.14em;
+}

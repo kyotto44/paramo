@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- La puerta de Páramo: vano de piedra, hojas verdes y la rendija de brasa. -->
+  <rect width="32" height="32" rx="6" fill="#eceee8"/>
+  <path d="M6 30V5h20v25" fill="#bdb9ad"/>
+  <rect x="9" y="9" width="14" height="21" fill="#1c1916"/>
+  <rect x="9" y="9" width="7" height="21" fill="#1e4636"/>
+  <rect x="17.5" y="9" width="5.5" height="21" fill="#1e4636"/>
+  <rect x="16" y="9" width="1.5" height="21" fill="#ec7a2f"/>
+</svg>
